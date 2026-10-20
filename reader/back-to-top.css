@@ -1,0 +1,9 @@
+/* Back to top: a 48px glass circle, bottom right, clear of the reader's centered progress pill */
+.back-to-top{position:fixed;z-index:40;right:max(20px,calc(env(safe-area-inset-right) + 14px));bottom:max(24px,calc(env(safe-area-inset-bottom) + 18px));display:grid;place-items:center;width:48px;height:48px;padding:0;border:1px solid var(--glass-edge);border-radius:var(--r-pill);background:var(--glass-bg-strong);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);box-shadow:var(--glass-shadow);color:var(--ink);cursor:pointer;opacity:0;transform:translateY(14px) scale(.9);pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease),background .2s var(--ease)}
+.back-to-top.is-shown{opacity:1;transform:none;pointer-events:auto}
+.back-to-top:hover{color:var(--blue,#2039c4)}
+.back-to-top:active{transform:scale(.94)}
+.back-to-top:focus-visible{outline:2px solid var(--blue,#2039c4);outline-offset:3px}
+html[data-view="reader"] .back-to-top{color:var(--br-ink,var(--ink))}
+@media(prefers-reduced-transparency:reduce){.back-to-top{background:var(--paper);-webkit-backdrop-filter:none;backdrop-filter:none}}
+@media print{.back-to-top{display:none}}

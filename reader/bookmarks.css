@@ -1,0 +1,37 @@
+/* Saved passages share the reading palette, including warm night mode. */
+.bookmark-page-button{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;min-width:44px;padding:8px 13px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);font:inherit;font-size:13px;white-space:nowrap;cursor:pointer}
+.bookmark-page-button[aria-pressed=true]{background:var(--pale);color:var(--green)}
+.bookmark-page-button:disabled{opacity:.4;cursor:default}
+.bookmark-filters{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:18px;margin:28px 0}
+.bookmark-filters label{display:grid;gap:8px;font-size:13px;color:var(--muted)}
+.bookmark-filters input,.bookmark-filters select{width:100%;min-height:46px}
+.bookmark-filter-tabs{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px}
+.bookmark-filter-tabs button{font-size:13px;min-height:44px;padding:8px 15px}
+.bookmark-filter-tabs [aria-pressed=true]{background:var(--green);color:var(--paper);border-color:var(--green)}
+.bookmark-card{border-top:1px solid var(--line);padding:28px 0;overflow-wrap:anywhere}
+.bookmark-card-meta{display:flex;justify-content:space-between;gap:16px;margin-bottom:14px;color:var(--muted);font-size:12px}
+.bookmark-card h2{font-size:clamp(22px,3vw,30px);margin:8px 0 18px}
+.bookmark-card blockquote{font:inherit;line-height:1.85;border-left:3px solid var(--green);padding:12px 18px;margin:0 0 20px;white-space:pre-wrap;color:var(--ink)}
+.bookmark-card .bookmark-quote-highlight{background:var(--pale);border-radius:0 8px 8px 0}
+.bookmark-card .button-row{gap:16px}
+.bookmark-empty{padding:40px 20px;margin-bottom:30px}
+.bookmark-undo{padding:16px;background:var(--pale);margin-bottom:22px;border-radius:8px}
+mark[data-saved-highlight]{background:#f3dfa2;color:inherit;border-radius:2px;box-decoration-break:clone;-webkit-box-decoration-break:clone;text-decoration:underline;text-decoration-color:#b59141;text-decoration-thickness:1px;text-underline-offset:3px}
+[data-reading-theme="night"] mark[data-saved-highlight],html[data-theme="dark"] mark[data-saved-highlight]{background:#53451f;color:inherit}
+.bookmark-arrival{outline:2px solid var(--green);outline-offset:5px;border-radius:3px}
+#bookmark-selection{position:fixed;z-index:1200;bottom:calc(18px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:10px;width:max-content;max-width:calc(100vw - 24px);padding:12px;border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--ink);box-shadow:0 8px 40px #0004}
+#bookmark-selection[hidden]{display:none}
+#bookmark-selection button{display:inline-flex;align-items:center;justify-content:center;min-width:48px;min-height:48px;padding:10px}
+.dialog-bar{flex-wrap:wrap;gap:8px}
+@media(max-width:700px){.bookmark-filters{grid-template-columns:1fr}#bookmark-selection{gap:6px;padding:8px}.bookmark-card-meta{font-size:11px}.topbar-actions .bookmark-page-button{display:none}}
+@media(prefers-reduced-motion:reduce){.bookmark-arrival{scroll-behavior:auto}}
+/* Icon-only controls keep their names in aria-label and title. */
+.bookmark-page-button{padding:8px 11px}
+.bookmark-filter-tabs button{display:inline-flex;align-items:center;justify-content:center;min-width:52px}
+.bookmark-kind{display:inline-flex;align-items:center;color:var(--green)}
+.bookmark-card .icon-button{border:1px solid var(--line);color:var(--muted)}
+.bookmark-help .read-icon{width:17px;height:17px;vertical-align:-3px}
+mark[data-saved-highlight]{cursor:pointer}
+#toast.show{display:flex;align-items:center;gap:16px}
+.toast-action{background:none;border:0;color:inherit;font:inherit;font-weight:700;text-decoration:underline;text-underline-offset:3px;padding:6px 4px;min-height:36px;cursor:pointer}
+dialog #toast{position:fixed}

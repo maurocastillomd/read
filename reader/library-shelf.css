@@ -1,0 +1,35 @@
+/* Shelf headers fold their shelf away with one tap */
+html .shelf-group h3.shelf-group-title{padding:0;background:transparent}
+.shelf-toggle{display:inline-flex;align-items:center;gap:10px;min-height:40px;padding:8px 12px 8px 16px;border:0;border-radius:var(--r-pill);background:var(--glass-fill);color:var(--ink);font:inherit;cursor:pointer;transition:background .2s var(--ease),transform .2s var(--ease)}
+.shelf-toggle:hover{background:var(--glass-fill-hover)}
+.shelf-toggle:active{transform:scale(.96)}
+.shelf-toggle:focus-visible{outline:2px solid var(--blue,#2039c4);outline-offset:3px}
+.shelf-toggle>span:not(.sr-only){font-size:12px;font-weight:450;color:var(--muted)}
+.shelf-chevron{color:var(--muted);transition:transform .3s var(--ease)}
+.shelf-closed .shelf-chevron{transform:rotate(-90deg)}
+.shelf-fold{display:grid;grid-template-rows:1fr;transition:grid-template-rows .4s var(--ease),opacity .3s var(--ease)}
+.shelf-fold>.shelf{min-height:0;overflow:hidden;padding:4px 10px 8px;margin:-4px -10px -8px}
+.shelf-closed .shelf-fold{grid-template-rows:0fr;opacity:0}
+html .shelf-groups:has(.shelf-closed){gap:22px}
+.shelf-closed h3.shelf-group-title{margin-bottom:0}
+
+/* Covers: a book's own cover photo */
+.book-object-photo{border-radius:3px 6px 6px 3px}
+.tile-image .book-object-photo img.book-cover-photo,.book-object-photo img.book-cover-photo{display:block;width:100%;height:100%;max-width:none;object-fit:cover;border-radius:3px 6px 6px 3px;border:1px solid rgba(11,11,12,.16);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08),10px 16px 26px -12px rgba(11,11,12,.32);background:#222329}
+.book-object-photo .book-spine{background:linear-gradient(90deg,rgba(11,11,12,.22),rgba(255,255,255,.12) 70%,transparent)}
+/* Covers drawn from the reading itself */
+.book-object.generated-cover .book-cover-front{background:var(--cover-bg);color:var(--cover-fg)}
+.book-object.generated-cover .book-art{color:inherit;opacity:.88}
+.book-object.cover-light .book-cover-front{border-color:rgba(11,11,12,.12)}
+.book-object.cover-light .book-cover-front:before{border-color:rgba(11,11,12,.16)}
+.book-object.generated-cover .book-cover-title{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden}
+.book-object.generated-cover .book-cover-title.cover-title-long{font-size:.74em;-webkit-line-clamp:6;letter-spacing:-.02em}
+.book-object.generated-cover .book-cover-author{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+/* Articles read as a paper: a squared sheet, no spine, no rotation of a bound book */
+.book-object.article-cover .book-cover-front{border-radius:4px;padding-left:25px}
+.book-object.article-cover:before{inset:5px -5px -5px 5px;border-radius:4px;background:color-mix(in srgb,#efeeea 92%,var(--cover-bg))}
+.book-object.article-cover .book-cover-front:before{inset:13px}
+.cover-photo-band{padding:12px 0 14px}
+.cover-photo-band img{display:block;width:100%;height:100%;max-height:150px;min-height:90px;object-fit:cover;border-radius:6px;max-width:none!important;box-shadow:none!important}
+.tile-image .cover-photo-band img{height:auto;aspect-ratio:4/3}
+.book-object.generated-cover .cover-series{overflow:hidden;text-overflow:ellipsis;max-width:100%}

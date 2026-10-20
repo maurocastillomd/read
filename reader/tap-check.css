@@ -1,0 +1,31 @@
+.tap-set{display:grid;gap:22px;max-width:calc(var(--prose-measure,68ch) + 48px);margin:0 auto 28px}
+.tap-intro{margin:0;color:var(--muted);font-size:16px}
+.tap-question{padding:22px 22px 20px;border:1px solid var(--line);border-radius:14px;background:var(--white)}
+.tap-meta{display:flex;justify-content:space-between;gap:12px;color:var(--muted);font-size:12px;font-weight:650;letter-spacing:.04em;text-transform:uppercase}
+.tap-question h3{margin:10px 0 16px;font-size:19px;line-height:1.45;color:var(--ink)}
+.tap-choices{display:grid;gap:10px}
+.tap-choice{display:flex;align-items:center;gap:14px;width:100%;min-height:58px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--soft);color:var(--ink);font:inherit;font-size:16px;line-height:1.45;text-align:left;cursor:pointer}
+.tap-choice:hover:not([disabled]){border-color:var(--green)}
+.tap-choice[disabled]{cursor:default;opacity:.75}
+.tap-letter{display:grid;place-content:center;flex-shrink:0;width:28px;height:28px;border:1px solid var(--line);border-radius:7px;font-size:12px;font-weight:700;color:var(--muted)}
+.tap-choice.is-selected{border-color:var(--green);background:var(--pale)}
+.tap-choice.is-selected .tap-letter{background:var(--green);border-color:var(--green);color:var(--white)}
+.tap-choice.is-right{opacity:1;border-color:var(--green);background:var(--pale)}
+.tap-choice.is-wrong{opacity:1;border-color:#b5523b}
+.tap-order-picked{margin:0 0 12px;padding-left:24px;display:grid;gap:6px;font-size:16px}
+.tap-order-picked li.is-right::marker{color:var(--green)}
+.tap-order-picked li.is-wrong{text-decoration:underline wavy #b5523b;text-underline-offset:5px}
+.tap-confidence{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:16px;font-size:15px;color:var(--muted)}
+.tap-pill{min-height:44px;padding:8px 20px;border:1px solid var(--green);border-radius:999px;background:var(--white);color:var(--ink);font:inherit;font-weight:650;cursor:pointer}
+.tap-pill:hover{background:var(--pale)}
+.tap-feedback{margin-top:18px;padding:16px 18px;border-left:3px solid var(--green);background:var(--pale);outline:none}
+.tap-feedback.is-wrong{border-left-color:#b5523b}
+.tap-feedback strong{font-size:16px}
+.tap-feedback p{margin:6px 0 10px;font-size:16px;line-height:1.6}
+.tap-feedback-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px}
+.tap-text-button{min-height:40px;padding:6px 0;border:0;background:none;color:var(--green);font:inherit;font-size:14px;font-weight:650;text-decoration:underline;text-underline-offset:4px;cursor:pointer}
+.chapter-practice .practice-card .tap-set{margin:0}
+.tap-mark{margin-left:auto;padding-left:8px;color:var(--green);font-size:20px;font-weight:700}
+.tap-choice.is-wrong .tap-letter{background:#b5523b;border-color:#b5523b;color:#fff}
+.tap-feedback strong{display:block;line-height:1.45}
+.chapter-practice .tap-set{margin:24px 0 0}

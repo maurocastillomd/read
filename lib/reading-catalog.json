@@ -1,0 +1,314 @@
+{
+  "version": 1,
+  "books": [
+    {
+      "id": "thinking-in-systems",
+      "title": "Thinking in Systems",
+      "author": "Donella H. Meadows",
+      "url": "https://www.penguinrandomhouse.com/books/801035/thinking-in-systems-by-donella-meadows/",
+      "description": "A primer on stocks, flows, feedback, delays, and the limits of intervening in connected systems.",
+      "tags": [
+        "systems",
+        "feedback",
+        "complexity",
+        "decision-making",
+        "leadership"
+      ]
+    },
+    {
+      "id": "the-fifth-discipline",
+      "title": "The Fifth Discipline",
+      "author": "Peter M. Senge",
+      "url": "https://www.penguinrandomhouse.com/books/163984/the-fifth-discipline-by-peter-m-senge/",
+      "description": "Connects systems thinking with mental models, shared vision, and learning together in an organization.",
+      "tags": [
+        "systems",
+        "leadership",
+        "teamwork",
+        "organizational-learning",
+        "mental-models"
+      ]
+    },
+    {
+      "id": "the-checklist-manifesto",
+      "title": "The Checklist Manifesto",
+      "author": "Atul Gawande",
+      "url": "https://us.macmillan.com/books/9780312430009/thechecklistmanifesto/",
+      "description": "Examines how short checklists and communication routines support people performing complex work.",
+      "tags": [
+        "systems",
+        "complexity",
+        "communication",
+        "operations",
+        "reliability"
+      ]
+    },
+    {
+      "id": "thinking-in-bets",
+      "title": "Thinking in Bets",
+      "author": "Annie Duke",
+      "url": "https://www.penguinrandomhouse.com/books/552885/thinking-in-bets-by-annie-duke/",
+      "description": "Separates the quality of a decision from its outcome and explores judgment when information is incomplete.",
+      "tags": [
+        "decision-making",
+        "uncertainty",
+        "reflection",
+        "feedback",
+        "leadership"
+      ]
+    },
+    {
+      "id": "noise",
+      "title": "Noise: A Flaw in Human Judgment",
+      "author": "Daniel Kahneman, Olivier Sibony, and Cass R. Sunstein",
+      "url": "https://www.hachettebookgroup.com/titles/daniel-kahneman/noise/9780316322270/",
+      "description": "Explores unwanted variation in human judgment and ways to make evaluation processes more consistent.",
+      "tags": [
+        "decision-making",
+        "measurement",
+        "uncertainty",
+        "bias",
+        "evaluation"
+      ]
+    },
+    {
+      "id": "superforecasting",
+      "title": "Superforecasting",
+      "author": "Philip E. Tetlock and Dan Gardner",
+      "url": "https://www.penguinrandomhouse.com/books/227815/superforecasting-by-philip-e-tetlock-and-dan-gardner/",
+      "description": "Uses forecasting research to examine probability estimates, updating beliefs, and learning from scored predictions.",
+      "tags": [
+        "decision-making",
+        "uncertainty",
+        "measurement",
+        "learning",
+        "forecasting"
+      ]
+    },
+    {
+      "id": "good-strategy-bad-strategy",
+      "title": "Good Strategy Bad Strategy",
+      "author": "Richard Rumelt",
+      "url": "https://www.penguinrandomhouse.com/books/208668/good-strategy-bad-strategy-by-richard-rumelt/",
+      "description": "Distinguishes coherent responses to important obstacles from broad ambitions and lists of goals.",
+      "tags": [
+        "strategy",
+        "leadership",
+        "priorities",
+        "systems",
+        "decision-making"
+      ]
+    },
+    {
+      "id": "the-happiness-trap",
+      "title": "The Happiness Trap, Second Edition",
+      "author": "Russ Harris",
+      "url": "https://www.shambhala.com/the-happiness-trap-second-edition.html",
+      "description": "Introduces acceptance and commitment skills for relating differently to difficult thoughts and acting on personal values.",
+      "tags": [
+        "acceptance",
+        "emotions",
+        "values",
+        "stress",
+        "psychological-flexibility"
+      ]
+    },
+    {
+      "id": "emotional-agility",
+      "title": "Emotional Agility",
+      "author": "Susan David",
+      "url": "https://www.penguinrandomhouse.com/books/318298/emotional-agility-by-susan-david/",
+      "description": "Explores recognizing emotions, loosening their hold on behavior, and choosing actions that fit one's values.",
+      "tags": [
+        "emotions",
+        "acceptance",
+        "values",
+        "leadership",
+        "self-awareness"
+      ]
+    },
+    {
+      "id": "four-thousand-weeks",
+      "title": "Four Thousand Weeks",
+      "author": "Oliver Burkeman",
+      "url": "https://us.macmillan.com/books/9780374159122/fourthousandweeks/",
+      "description": "Questions the pursuit of total control over time and argues for choosing meaningful commitments within finite limits.",
+      "tags": [
+        "acceptance",
+        "time",
+        "priorities",
+        "attention",
+        "limits"
+      ]
+    },
+    {
+      "id": "the-inner-game-of-tennis",
+      "title": "The Inner Game of Tennis",
+      "author": "W. Timothy Gallwey",
+      "url": "https://theinnergame.com/the-inner-game-of-tennis/",
+      "description": "A sports coaching classic exploring attention, self-talk, and the interference that can accompany trying to perform.",
+      "tags": [
+        "coaching",
+        "attention",
+        "self-talk",
+        "learning",
+        "sport-psychology"
+      ]
+    },
+    {
+      "id": "atomic-habits",
+      "title": "Atomic Habits",
+      "author": "James Clear",
+      "url": "https://jamesclear.com/atomic-habits",
+      "description": "A practical framework for changing habits through small actions, cues, and the design of everyday environments.",
+      "tags": [
+        "habits",
+        "behavior-change",
+        "environment",
+        "consistency",
+        "systems"
+      ]
+    },
+    {
+      "id": "tiny-habits",
+      "title": "Tiny Habits",
+      "author": "BJ Fogg",
+      "url": "https://www.bjfogg.com/tiny-habits",
+      "description": "Presents a method for starting with small behaviors and building habits around existing routines.",
+      "tags": [
+        "habits",
+        "behavior-change",
+        "consistency",
+        "motivation",
+        "routines"
+      ]
+    },
+    {
+      "id": "make-it-stick",
+      "title": "Make It Stick: The Science of Successful Learning",
+      "author": "Peter C. Brown, Henry L. Roediger III, and Mark A. McDaniel",
+      "url": "https://www.makeitstick.com/about-make-it-stick",
+      "description": "Explains retrieval practice, spacing, and other learning approaches while questioning the confidence produced by easy review.",
+      "tags": [
+        "learning",
+        "memory",
+        "retrieval",
+        "practice",
+        "education"
+      ]
+    },
+    {
+      "id": "range",
+      "title": "Range: Why Generalists Triumph in a Specialized World",
+      "author": "David Epstein",
+      "url": "https://davidepstein.com/range/",
+      "description": "Examines breadth, exploration, and learning across domains, especially when problems are complex and unpredictable.",
+      "tags": [
+        "learning",
+        "expertise",
+        "development",
+        "complexity",
+        "transfer"
+      ]
+    },
+    {
+      "id": "the-coaching-habit",
+      "title": "The Coaching Habit",
+      "author": "Michael Bungay Stanier",
+      "url": "https://www.mbs.works/coaching-habit-book/",
+      "description": "Offers a question-led approach to everyday leadership conversations, listening, and helping others think through their challenges.",
+      "tags": [
+        "coaching",
+        "leadership",
+        "communication",
+        "questions",
+        "staff-development"
+      ]
+    },
+    {
+      "id": "radical-candor",
+      "title": "Radical Candor",
+      "author": "Kim Scott",
+      "url": "https://www.radicalcandor.com/the-book",
+      "description": "A management approach combining personal care with clear feedback and direct discussion of expectations.",
+      "tags": [
+        "leadership",
+        "feedback",
+        "communication",
+        "staff-development",
+        "relationships"
+      ]
+    },
+    {
+      "id": "the-culture-code",
+      "title": "The Culture Code",
+      "author": "Daniel Coyle",
+      "url": "https://www.penguinrandomhouse.com/books/235200/the-culture-code-by-daniel-coyle/",
+      "description": "Explores group culture through stories about belonging, shared vulnerability, purpose, and cooperation.",
+      "tags": [
+        "leadership",
+        "teamwork",
+        "culture",
+        "communication",
+        "trust"
+      ]
+    },
+    {
+      "id": "nsca-essentials-sport-science",
+      "title": "NSCA's Essentials of Sport Science",
+      "author": "National Strength and Conditioning Association; Duncan French and Lorena Torres Ronda, editors",
+      "url": "https://us.humankinetics.com/products/nscas-essentials-of-sport-science",
+      "description": "Connects training theory, athlete assessment, monitoring, statistics, data management, and communication in applied sport science.",
+      "tags": [
+        "sport-science",
+        "measurement",
+        "training",
+        "data",
+        "decision-making"
+      ]
+    },
+    {
+      "id": "science-practice-strength-training",
+      "title": "Science and Practice of Strength Training, Third Edition",
+      "author": "Vladimir M. Zatsiorsky, William J. Kraemer, and Andrew C. Fry",
+      "url": "https://us.humankinetics.com/products/science-and-practice-of-strength-training-3rd-edition",
+      "description": "Explains physiological foundations and practical choices in strength training, including intensity, timing, recovery, and monitoring.",
+      "tags": [
+        "strength-conditioning",
+        "training",
+        "physiology",
+        "adaptation",
+        "monitoring"
+      ]
+    },
+    {
+      "id": "essentials-strength-conditioning",
+      "title": "Essentials of Strength Training and Conditioning, Fifth Edition",
+      "author": "National Strength and Conditioning Association; G. Gregory Haff and N. Travis Triplett, editors",
+      "url": "https://us.humankinetics.com/products/essentials-of-strength-training-and-conditioning-5th-edition-with-hkpropel-access",
+      "description": "A broad professional reference on body systems, exercise technique, testing, program design, and strength and conditioning administration.",
+      "tags": [
+        "strength-conditioning",
+        "training",
+        "physiology",
+        "testing",
+        "program-design"
+      ]
+    },
+    {
+      "id": "periodization-strength-training-sports",
+      "title": "Periodization of Strength Training for Sports, Fourth Edition",
+      "author": "Tudor O. Bompa and Carlo Buzzichelli",
+      "url": "https://us.humankinetics.com/products/periodization-of-strength-training-for-sports-4th-edition",
+      "description": "Presents ways to organize strength training across short and long planning horizons and different sporting demands.",
+      "tags": [
+        "strength-conditioning",
+        "training",
+        "planning",
+        "periodization",
+        "program-design"
+      ]
+    }
+  ],
+  "curated": []
+}

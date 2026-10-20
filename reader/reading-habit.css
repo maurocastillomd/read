@@ -1,0 +1,37 @@
+.reading-habit-strip{display:flex;justify-content:flex-end;margin:-8px 0 25px}
+.reading-habit-summary{display:flex;align-items:center;gap:9px;background:transparent;border:0;color:var(--muted);font:500 12px/1.5 var(--sans);padding:7px 0;min-height:44px;text-align:left;cursor:pointer;touch-action:manipulation}
+.habit-summary-mark{color:var(--blue);font-size:19px}
+.habit-summary-link{color:var(--blue);margin-left:7px;white-space:nowrap}
+.reading-habit-summary:hover .habit-summary-link{text-decoration:underline;text-underline-offset:4px}
+.reading-habit-dashboard{margin:10px 0 48px;padding:28px 30px 20px;border:1px solid var(--line);border-radius:12px;background:var(--white);scroll-margin-top:90px}
+.reading-habit-dashboard:focus{outline:2px solid var(--blue);outline-offset:5px}
+.habit-heading{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:25px}
+.habit-heading .eyebrow{margin:0 0 7px;font-size:10px}
+.habit-heading h2{font:600 25px/1.25 var(--sans);letter-spacing:-.035em;margin:0}
+.habit-heading-note{color:var(--muted);font-size:12px;margin:0}
+.habit-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:30px}
+.habit-projection{border-left:1px solid var(--line);padding-left:30px}
+.habit-stat{display:flex;align-items:baseline;flex-wrap:wrap;gap:10px;margin:0;color:var(--muted);font-size:13px}
+.habit-stat strong{color:var(--ink);font:500 42px/1.1 var(--sans);letter-spacing:-.055em;font-variant-numeric:tabular-nums}
+.habit-week{display:flex;list-style:none;padding:0;margin:22px 0 14px;gap:12px;max-width:320px;justify-content:space-between}
+.habit-week li{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);font-size:10px}
+.habit-week i{width:25px;height:25px;border:1px solid var(--line);border-radius:50%;font-style:normal;display:flex;align-items:center;justify-content:center;color:var(--blue);background:var(--soft);font-size:13px}
+.habit-week .is-read i{background:var(--blue);color:var(--paper);border-color:var(--blue)}
+.habit-week .is-today i{outline:1px solid var(--blue);outline-offset:3px}
+.habit-status,.habit-assumption{font-size:12px;line-height:1.65;color:var(--muted);margin:12px 0 0;max-width:46ch}
+.habit-controls{display:flex;gap:20px;margin:18px 0 0}
+.habit-controls label{font-weight:500;font-size:11px;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+.habit-controls label>span{display:flex;align-items:center;gap:7px}
+.habit-controls input{width:65px;min-height:44px;padding:8px;font:500 15px/1.25 var(--sans);color:var(--ink);border:1px solid var(--line);border-radius:6px;background:var(--paper);margin:0}
+.habit-controls label>span>span{font-size:10px;font-weight:400}
+.habit-method{border-top:1px solid var(--line);margin-top:25px;padding-top:14px;color:var(--muted);font-size:11px;line-height:1.75}
+.habit-method summary{cursor:pointer;min-height:28px;color:var(--muted)}
+.habit-method p{max-width:90ch;margin:10px 0 0;font-size:12px}
+.reading-habit-book{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;margin:25px 0 30px}
+.habit-book-label{display:block;text-transform:uppercase;font:600 10px/1.5 var(--sans);letter-spacing:.08em;color:var(--blue);margin-bottom:7px}
+.reading-habit-book p{font:500 15px/1.55 var(--sans);color:var(--ink);margin:0 0 5px}
+.reading-habit-book small{color:var(--muted);font-size:11px;line-height:1.6;display:block}
+.reading-habit-book .text-button{font-size:12px;margin-top:9px;min-height:44px}
+@media(max-width:760px){.reading-habit-strip{justify-content:flex-start;margin:-4px 0 18px}.reading-habit-dashboard{padding:24px;margin-bottom:35px}.habit-grid{gap:20px}.habit-projection{padding-left:20px}.habit-week{gap:7px}.habit-controls{gap:12px;flex-wrap:wrap}.habit-heading-note{display:none}.habit-stat strong{font-size:37px}.habit-stat{font-size:12px}}
+@media(max-width:520px){.reading-habit-dashboard{padding:22px 20px}.habit-grid{grid-template-columns:1fr;gap:23px}.habit-projection{padding:23px 0 0;border-left:0;border-top:1px solid var(--line)}.habit-streak{display:grid;grid-template-columns:1fr;gap:0}.habit-week{max-width:none;margin:18px 0 7px}.habit-week i{width:28px;height:28px}.habit-heading{margin-bottom:22px}.habit-heading h2{font-size:23px}.habit-controls{gap:25px}.reading-habit-summary{font-size:11px;gap:7px}.habit-summary-link{margin-left:2px}.habit-assumption{max-width:none}}
+@media print{.reading-habit-strip,.habit-controls,.reading-habit-book .text-button{display:none}.reading-habit-dashboard{break-inside:avoid}}

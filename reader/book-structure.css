@@ -1,0 +1,13 @@
+.book-structure-intro{max-width:72ch;margin:0 0 28px;color:var(--muted);font-size:var(--reading-ui,16px);line-height:1.65}
+.book-structure-part{margin:36px 0 44px;scroll-margin-top:28px}
+.book-structure-part>h3{margin:0 0 22px;padding-bottom:14px;border-bottom:2px solid var(--accent,#2039c4);font-size:clamp(20px,1.6vw,26px);font-weight:650;line-height:1.35;letter-spacing:-.015em}
+.book-structure-chapter{margin:22px 0 30px}
+.book-structure-chapter-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px 24px;flex-wrap:wrap}
+.book-structure-chapter-head h4{margin:0;font-size:var(--reading-ui,17px);line-height:1.5;font-weight:650}
+.book-structure-chapter-head .text-button{font-size:var(--reading-small,14px);min-height:44px;flex-shrink:0}
+.book-structure-chapter .chapter-guide-list{margin:0}
+.book-structure-status{color:var(--muted);font-size:var(--reading-small,14px);line-height:1.6;margin:2px 0 0}
+.book-structure-reference{margin:30px 0;border-block:1px solid var(--line);padding:18px 0}
+.book-structure-reference>summary{cursor:pointer;min-height:44px;display:list-item;align-content:center;font-size:var(--reading-ui,16px);font-weight:600;line-height:1.5}
+.book-structure-reference[open]>summary{margin-bottom:14px}
+@media(max-width:600px){.book-structure-part{margin:28px 0 34px}.book-structure-part>h3{font-size:21px;margin-bottom:16px}.book-structure-chapter{margin:18px 0 24px}.book-structure-chapter-head{gap:4px 12px}.book-structure-intro{margin-bottom:22px}}

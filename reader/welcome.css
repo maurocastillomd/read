@@ -1,0 +1,26 @@
+/* First run: your name, then your first reading. Glass card, content first. */
+.welcome{display:grid;justify-items:center;padding:clamp(20px,5vh,56px) 16px clamp(32px,6vw,72px)}
+/* No streaks or plans before there is anything to read. */
+#main:has(.welcome) :is(.reading-habit-strip,.reading-habit-dashboard,.reading-habit-summary){display:none}
+.welcome-card{width:min(640px,100%);padding:clamp(24px,5vw,44px);border-radius:var(--r-sheet);background:var(--glass-bg-strong);border:1px solid var(--glass-edge);box-shadow:var(--glass-shadow);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur)}
+.welcome-card h1{margin:6px 0 12px;font:600 clamp(32px,6vw,46px)/1.05 var(--serif);letter-spacing:-.03em}
+.welcome-card .lead{margin:0;color:var(--muted);max-width:52ch}
+.welcome-art{margin:22px 0 4px;border-radius:var(--r-card);background:var(--glass-fill);overflow:hidden}
+.welcome-art .ivm{max-height:240px}
+.welcome-form{display:grid;gap:10px;margin:22px 0 0}
+.welcome-form label{font:600 15px/1.3 var(--sans)}
+.welcome-field{display:flex;gap:10px;flex-wrap:wrap}
+.welcome-field input{flex:1 1 200px;min-height:48px;padding:0 16px;border-radius:var(--r-control);border:1px solid var(--glass-edge);background:var(--paper);color:var(--ink);font:500 17px/1 var(--sans)}
+.welcome-field input:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.welcome-field .primary{min-height:48px}
+.welcome-card .button-row{margin:22px 0 0}
+.welcome-kinds{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:22px 0 0;padding:0;list-style:none}
+.welcome-kinds li{display:grid;gap:2px;padding:12px 14px;border-radius:var(--r-control);background:var(--glass-fill)}
+.welcome-kinds strong{font:600 15px/1.2 var(--sans)}
+.welcome-kinds span{font-size:13.5px;color:var(--muted)}
+.welcome-change{margin:16px 0 0;color:var(--muted)}
+.welcome-rights{margin:22px 0 0}
+.welcome-rights p{font-size:14.5px;line-height:1.55}
+.library-greeting{margin:4px 0 14px;font:600 clamp(24px,4vw,30px)/1.15 var(--serif);letter-spacing:-.02em}
+@media (max-width:767px){.welcome-kinds{grid-template-columns:1fr}.welcome{padding-top:84px}}
+.welcome-promise{margin:14px 0 0;font-size:14px;line-height:1.5;color:var(--muted)}

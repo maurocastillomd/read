@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="theme-color" content="#2039C4">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="read.">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="Your private reading companion for books and articles, with illustrated lessons, deeper explanations, and source-linked learning.">
+  <title>read.</title>
+  <script>try{document.documentElement.dataset.sidebarCollapsed=String(localStorage.getItem('read-sidebar-collapsed-v1')==='true');}catch(_){}</script>
+  <script>/*__READING_COMFORT__*/</script>
+  <style>/*__STYLES__*/</style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to reading</a>
+  <header class="mobile-header"><button class="wordmark" data-action="library">read<span class="brand-dot">.</span></button><button class="text-button reading-settings-trigger" data-action="reading-settings" aria-label="Reading settings">Aa</button><button class="bookmark-page-button" data-action="bookmark-page" aria-label="Bookmark this page"><span aria-hidden="true">◇</span></button><button class="text-button" id="menu-button" aria-expanded="false" aria-controls="sidebar">Menu <span aria-hidden="true">+</span></button></header>
+  <aside class="sidebar" id="sidebar" aria-label="Book navigation"></aside>
+  <main id="main" tabindex="-1"></main>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <dialog id="source-dialog" aria-labelledby="source-title"><div class="dialog-bar"><span>From your book</span><button class="text-button" data-action="bookmark-source">Bookmark section</button><button class="text-button" data-action="close-source">Close <span aria-hidden="true">×</span></button></div><div id="source-content"></div><div id="source-return"></div></dialog>
+  <input id="epub-file" type="file" accept=".epub,application/epub+zip" hidden>
+  <input id="companion-file" type="file" accept=".html,.json,text/html,application/json" hidden>
+  <input id="restore-file" type="file" accept=".json,application/json" hidden>
+  <script id="book-data" type="application/json">/*__BOOK_DATA__*/</script>
+  <script id="guide-data" type="application/json">/*__GUIDE_DATA__*/</script>
+  <script id="generated-data" type="application/json">/*__GENERATED_DATA__*/</script>
+  <script id="lesson-enrichment-data" type="application/json">/*__LESSON_ENRICHMENT__*/</script>
+  <script id="tap-checks-data" type="application/json">/*__TAP_CHECKS__*/</script>
+  <script id="idea-visuals-data" type="application/json">/*__IDEA_VISUALS__*/</script>
+  <script id="thirty-min-data" type="application/json">/*__THIRTY_MIN_DATA__*/</script>
+  <script id="reading-catalog-data" type="application/json">/*__READING_CATALOG__*/</script>
+  <script id="portable-state" type="application/json">{}</script>
+  <script>/*__JSZIP__*/</script>
+  <script>/*__APP__*/</script>
+</body>
+</html>

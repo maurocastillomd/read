@@ -1,0 +1,30 @@
+/* A fluid page with a separate, readable prose measure. */
+:root{--page-column:1560px;--page-gutter:clamp(22px,3vw,48px);--prose-measure:72ch}
+html[data-reading-width="comfortable"]{--page-column:1000px;--prose-measure:62ch;--lesson-column-units:44}
+html[data-reading-width="fill"]{--page-column:2400px;--prose-measure:86ch;--lesson-column-units:64}
+main{max-width:none;padding-inline:var(--page-gutter)}
+html[data-sidebar-collapsed="true"] main,html[data-reading-focus="true"] main{width:100%;max-width:calc(var(--page-column) + var(--page-gutter) * 2);margin-inline:auto;padding-inline:var(--page-gutter)}
+html[data-sidebar-collapsed="true"] main:is([data-view="learn"],[data-view="explore"],[data-view="reader"],[data-view="notes"],[data-view="bookmarks"],[data-view="setup"]){--focus-column:var(--page-column)}
+main > :is(.lesson-body,.step-nav,.lesson-footer,.lesson-progress,.lesson-reading-progress,.reading-tools-bar,.lesson-head,.chapter-practice){max-width:var(--lesson-column);width:100%;margin-inline:auto}
+main[data-view="explore"] > :is(.lesson-head,.lesson-meta,.lesson-order,.method-note,.generation-provenance,.review-lesson){max-width:var(--lesson-column);margin-inline:auto}
+main > .reader-toolbar{max-width:var(--lesson-column);width:100%;margin-inline:auto}
+.lesson-body > :is(.ladder,.analogy-explanation,.fictional-example,.field,.recall-item,.lead-sm),.lesson-body .lab-concept-focus,.lesson-body .idea-summary{max-width:var(--prose-measure);margin-inline:auto}
+.reader-finish{font-size:var(--reading-size);max-width:var(--prose-measure)}
+.lesson-body .lab-visual-card{max-width:100%}
+.lesson-body .lab-concept-navigation{font-size:clamp(15px,1.1vw,18px)}
+.reading-tools-bar{display:flex;align-items:center;gap:12px 22px;flex-wrap:wrap;border-block:1px solid var(--line);padding:12px 0;margin:0 0 28px;color:var(--muted);font-size:13px}
+.reading-tools-bar button,.reading-tools-bar select{min-height:44px;background:var(--soft);border:1px solid var(--line);border-radius:7px;color:var(--ink);padding:8px 13px;font-size:14px}
+.reading-tools-bar .focus-enter{display:flex;align-items:center;gap:9px;background:var(--blue-wash);color:var(--accent);font-weight:600}
+.reading-size-tools{display:flex;align-items:center;gap:9px}.reading-size-tools output{min-width:43px;text-align:center;font-variant-numeric:tabular-nums}
+.reading-tools-bar label{display:flex;align-items:center;gap:9px;margin:0;font-size:13px;font-weight:500}
+.reading-auto-control input{width:18px;height:18px;accent-color:var(--accent)}
+.reading-width-control{margin-left:auto!important}.reading-width-control select{padding:8px;max-width:160px}
+.focus-exit{position:fixed;z-index:30;right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));min-height:48px;border:1px solid var(--line);border-radius:24px;padding:12px 20px;background:var(--paper);color:var(--ink);box-shadow:0 4px 24px #0003;font:600 14px/1.4 var(--sans);cursor:pointer}
+.focus-exit[hidden]{display:none}
+html[data-reading-focus="true"] :is(.sidebar,.mobile-header,.topbar,.reading-habit-strip,.reading-tools-bar,.lesson-meta,.step-nav,.lesson-order,.lesson-reading-progress,.reader-toolbar,.reader-tools,.reader-position-bar,.reader-completion,.app-footer){display:none!important}
+html[data-reading-focus="true"] main > :is(label[for="reader-search"],#reader-search,#search-results){display:none!important}
+html[data-reading-focus="true"] main{padding-top:clamp(24px,4vh,48px);padding-bottom:100px;min-height:100dvh}
+html[data-reading-focus="true"] #toast{left:50%}
+.lesson-head h1,main[data-view="explore"] .lesson-head h1{font-size:clamp(30px,calc(var(--reading-size) * 1.7),44px);line-height:1.2;margin-bottom:18px}
+@media(max-width:767px){main{padding-inline:22px}.reading-tools-bar{gap:10px 14px}.reading-width-control{margin-left:0!important}.reading-tools-bar .reading-width-control{flex-basis:100%}.reading-width-control select{flex:1;max-width:none}.reading-tools-bar label{font-size:14px}.focus-exit{right:16px;bottom:max(16px,env(safe-area-inset-bottom));min-height:48px}.reading-tools-bar select{font-size:16px}.lesson-body{min-width:0}}
+@media print{.reading-tools-bar,.focus-exit{display:none!important}main{width:100%!important;max-width:none!important;margin:0!important;padding:0!important}}

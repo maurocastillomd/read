@@ -1,0 +1,153 @@
+/* read. design system: quiet, rounded glass over the existing palette and type.
+   Rules live in DESIGN.md. Load this file last so it sets the final word on chrome. */
+:root{
+  --r-pill:999px;--r-control:14px;--r-card:22px;--r-sheet:28px;
+  --glass-bg:rgba(255,255,255,.74);--glass-bg-strong:rgba(255,255,255,.9);--glass-fill:rgba(11,11,12,.045);--glass-fill-hover:rgba(11,11,12,.08);
+  --glass-edge:rgba(11,11,12,.07);--glass-highlight:rgba(255,255,255,.75);
+  --glass-shadow:0 1px 0 var(--glass-highlight) inset,0 12px 32px -14px rgba(11,11,12,.22),0 2px 6px -3px rgba(11,11,12,.08);
+  --glass-blur:saturate(1.8) blur(24px);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+html[data-reading-theme="night"]{
+  --glass-bg:rgba(30,30,32,.74);--glass-bg-strong:rgba(30,30,32,.92);--glass-fill:rgba(255,255,255,.07);--glass-fill-hover:rgba(255,255,255,.12);
+  --glass-edge:rgba(255,255,255,.1);--glass-highlight:rgba(255,255,255,.08);
+  --glass-shadow:0 1px 0 var(--glass-highlight) inset,0 14px 36px -14px rgba(0,0,0,.7);
+}
+
+/* Shared glass surface */
+html :is(.topbar,.br-bar,.br-progress-pill,#toast,#bookmark-selection){background:var(--glass-bg);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);border:1px solid var(--glass-edge);box-shadow:var(--glass-shadow)}
+
+/* Round icon buttons */
+html .glass-icon,html .topbar .bookmark-page-button,html .br-icon{display:inline-grid;place-items:center;width:40px;height:40px;min-width:40px;min-height:40px;padding:0;border:0;border-radius:var(--r-pill);background:transparent;color:var(--ink);cursor:pointer;transition:background .2s var(--ease),transform .2s var(--ease)}
+html .glass-icon:hover,html .topbar .bookmark-page-button:hover,html .br-icon:hover{background:var(--glass-fill-hover)}
+html .glass-icon:active,html .br-icon:active{transform:scale(.94)}
+html .glass-icon svg,html .br-icon svg{width:20px;height:20px}
+html .glass-aa,html .br-aa{font:600 16px/1 var(--serif);letter-spacing:-.02em}
+html .topbar .sidebar-toggle{border:0!important;background:transparent!important;gap:0;padding:0;border-radius:var(--r-pill)!important}
+html .topbar .sidebar-toggle:hover{background:var(--glass-fill-hover)!important}
+
+/* App top bar: one floating pill */
+html .topbar{position:sticky;top:12px;z-index:20;display:flex;align-items:center;justify-content:space-between;flex-wrap:nowrap;gap:8px;min-height:0;margin:0 0 36px;padding:6px 8px;border-radius:var(--r-pill);font-size:13px}
+html .topbar-navigation{gap:6px;flex:1 1 auto;min-width:0}
+html .topbar .breadcrumb{font-size:13px;font-weight:600;color:var(--ink);letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+html .topbar-actions{display:flex;align-items:center;gap:2px;margin-left:auto}
+html .topbar .local-label{display:inline-grid;place-items:center;width:28px;height:40px;padding:0;background:none;border:0}
+html .reading-habit-strip{margin:-18px 0 30px}
+
+/* Sidebar: a floating glass rail on iPad and desktop */
+@media(min-width:768px){
+  html .sidebar{top:10px;bottom:10px;left:10px;height:auto;border:1px solid var(--glass-edge);border-radius:var(--r-sheet);background:var(--glass-bg);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);box-shadow:var(--glass-shadow)}
+}
+html .nav-item{border-radius:var(--r-control);transition:background .2s var(--ease),color .2s var(--ease)}
+html .nav-item:hover{background:var(--glass-fill)}
+html .nav-item[aria-current=page]{background:var(--blue-wash);color:var(--blue)}
+
+/* Buttons: pills */
+html :is(.primary,.secondary,.lab-button,.lab-button-secondary,.tap-choice,.tap-confidence button){border-radius:var(--r-pill)}
+html .primary{box-shadow:0 8px 20px -10px rgba(32,57,196,.55);transition:transform .2s var(--ease),box-shadow .2s var(--ease)}
+html .primary:active,html .secondary:active{transform:scale(.97)}
+html .secondary{background:var(--glass-fill);border-color:transparent}
+html .secondary:hover{background:var(--glass-fill-hover)}
+
+/* Cards and panels: large, soft radii, hairline edges */
+html :is(.lesson-lab,.lab-visual-card,.tap-set,.tap-card,.practice-card,.idea-summary,.full-flow,.fictional-example,.analogy-explanation,.principle,.recall-item,.generated-node,.book-tile,.book-hero,.reading-habit-panel,.next-books-section,.bookmark-card,.stats-card,.chapter-practice,.method-note,.library-intro){border-radius:var(--r-card)}
+html :is(.lab-segmented,.comfort-options,.bookmark-filter-tabs,.import-tabs){border-radius:var(--r-pill)}
+html .step-nav{border-radius:var(--r-card)}
+html :is(.step-nav button,.lab-segmented button,.comfort-options button,.bookmark-filter-tabs button,.import-tabs button){border-radius:var(--r-pill)}
+
+/* Dialogs: rounded glass sheets */
+html dialog:not(.br-sheet){border-radius:var(--r-sheet);border:1px solid var(--glass-edge);background:var(--glass-bg-strong);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);box-shadow:0 30px 80px -20px rgba(11,11,12,.35)}
+html dialog::backdrop{background:rgba(11,11,12,.28);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+html #reading-comfort-dialog{inset:12px 12px 12px auto;height:auto;max-height:calc(100dvh - 24px);margin:0;border-radius:var(--r-sheet)}
+html #reading-comfort-dialog .comfort-section{border-color:var(--glass-edge)}
+html #reading-comfort-dialog .comfort-options{background:var(--glass-fill);border:0;padding:4px}
+html #reading-comfort-dialog .comfort-options button{border:0;background:transparent}
+html #reading-comfort-dialog .comfort-options button[aria-pressed=true]{background:var(--glass-bg-strong);color:var(--ink);box-shadow:0 2px 10px -4px rgba(11,11,12,.25)}
+html #reading-comfort-dialog .comfort-close{border-radius:var(--r-pill);background:var(--glass-fill);border:0}
+html #reading-comfort-dialog select{border-radius:var(--r-pill);border:0;background-color:var(--glass-fill);padding:11px 16px}
+html #reading-comfort-dialog .comfort-page h3:not(:first-child),html #reading-comfort-dialog label[for=reading-width]{display:block;margin-top:24px}
+html #reading-comfort-dialog .comfort-sample{display:none}
+
+/* Toast: a floating pill */
+html #toast{border-radius:var(--r-pill);color:var(--ink);padding:12px 18px}
+html #bookmark-selection{border-radius:var(--r-pill);padding:6px}
+html #bookmark-selection button{border-radius:var(--r-pill)}
+
+/* ---------- Reader ---------- */
+html[data-view="reader"]:not([data-reading-paper="sepia"]){--br-accent:var(--blue,#2039c4);--br-wash:rgba(32,57,196,.08)}
+html[data-view="reader"][data-reading-theme="night"]{--br-accent:var(--blue,#b9baf0);--br-wash:rgba(185,186,240,.12)}
+html[data-view="reader"]{--glass-bg:color-mix(in srgb,var(--br-bg) 84%,transparent);--glass-bg-strong:color-mix(in srgb,var(--br-bg) 93%,transparent)}
+/* Floating glass bar instead of a full-width strip */
+html .br-bar{position:fixed;top:max(10px,env(safe-area-inset-top));left:50%;transform:translateX(-50%);width:min(760px,calc(100vw - 20px));box-sizing:border-box;padding:5px 6px;border-radius:var(--r-pill);background:var(--glass-bg);transition:transform .35s var(--ease),opacity .35s var(--ease)}
+html .br-chrome-hidden .br-bar{transform:translate(-50%,calc(-100% - 20px));opacity:0}
+html .br-bar .br-title{border-radius:var(--r-pill);background:transparent!important;border:0!important;box-shadow:none!important}
+html .br-bar .br-title:hover{background:var(--glass-fill)}
+html .br-actions .bookmark-page-button{width:40px;height:40px;min-width:40px;min-height:40px;border-radius:var(--r-pill)}
+html .br-opener{padding-top:clamp(96px,16vh,170px)}
+/* Bottom: a hairline across the screen and a small glass pill */
+html .br-progress{background:none;padding:0 0 max(10px,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;pointer-events:none}
+html .br-progress progress{position:fixed;left:0;right:0;bottom:0;width:100%;height:2px;margin:0;border-radius:0}
+html .br-progress-text{display:inline-flex;gap:10px;justify-content:center;padding:7px 14px;border-radius:var(--r-pill);background:var(--glass-bg);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);border:1px solid var(--glass-edge);box-shadow:var(--glass-shadow);transition:opacity .35s var(--ease),transform .35s var(--ease)}
+html .br-chrome-hidden .br-progress-text{opacity:.0;transform:translateY(8px)}
+/* Sheets, cards */
+html dialog.br-sheet{background:var(--glass-bg-strong);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);border:1px solid var(--glass-edge);border-radius:var(--r-sheet) var(--r-sheet) 0 0}
+@media(min-width:700px){html dialog.br-sheet{border-radius:var(--r-sheet)}}
+html dialog.br-sheet::backdrop{background:rgba(0,0,0,.22);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+html .br-sheet-head{background:transparent}
+html .br-toc-row,html .br-results button,html .br-menu>*{border-radius:var(--r-control)}
+html #br-search-input{border-radius:var(--r-pill);border:0;background:var(--glass-fill);padding:13px 18px}
+html .br-card{border-radius:var(--r-card);border:1px solid var(--glass-edge);background:var(--glass-fill)}
+html .br-card-check{background:var(--br-wash)}
+html .br-figure img,html .br-figure-sheet img{border-radius:14px}
+
+@media(prefers-reduced-transparency:reduce){
+  html :is(.topbar,.br-bar,.br-progress-text,#toast,dialog,.sidebar){-webkit-backdrop-filter:none!important;backdrop-filter:none!important;background:var(--paper)!important}
+}
+@media(prefers-reduced-motion:reduce){html *{transition-duration:0s!important}}
+
+/* Library: separate shelves for books and for articles & papers. */
+.shelf-groups{display:grid;gap:44px}
+.shelf-group-title{margin:0 0 18px;display:inline-flex;align-items:center;gap:10px;padding:7px 14px;border-radius:var(--r-pill);background:var(--glass-fill);font:600 14px/1.2 var(--sans);letter-spacing:-.01em}
+.shelf-group-title span{font-size:12px;font-weight:450;color:var(--muted)}
+
+/* Phone: the floating pill already carries Aa and the bookmark, so the header keeps only the wordmark and Menu. */
+@media(max-width:767px){html .mobile-header .reading-settings-trigger,html .mobile-header .bookmark-page-button{display:none}html .mobile-header{position:static}}
+/* A lesson step that only holds the real-life-examples notice keeps no empty room under it. */
+html .lesson-body:has(>.role-context-notice:only-child){min-height:0}
+
+/* Phone: one floating bar. The read. header steps aside; the bar's first button opens the menu as a glass sheet,
+   the bar stays solid enough that text never shows through it, and a paper band behind it covers the gap above and around its round ends. */
+@media(max-width:767px){
+  html .mobile-header{display:none!important}
+  html main{padding-top:calc(env(safe-area-inset-top,0px) + 12px)}
+  html .topbar{top:calc(env(safe-area-inset-top,0px) + 8px);margin-bottom:26px;background:var(--paper)!important;-webkit-backdrop-filter:none;backdrop-filter:none}
+  html body::before{content:"";position:fixed;inset:0 0 auto;height:calc(env(safe-area-inset-top,0px) + 68px);background:var(--paper);z-index:19;pointer-events:none}
+  html[data-view="reader"] body::before{display:none}
+  html .sidebar{display:none;position:fixed;top:calc(env(safe-area-inset-top,0px) + 80px);left:12px;right:12px;bottom:auto;width:auto;max-height:calc(100dvh - env(safe-area-inset-top,0px) - 100px);padding:12px 10px 16px;border:1px solid var(--glass-edge);border-radius:var(--r-sheet);background:var(--glass-bg-strong);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);box-shadow:var(--glass-shadow);z-index:30;overflow-y:auto}
+  html .sidebar.open{display:flex}
+  html .sidebar .sidebar-brand{display:block;padding:6px 14px 12px}
+  html .sidebar .sidebar-brand .wordmark{font-size:28px}
+  html .sidebar .sidebar-footer{display:flex;flex-direction:column;align-items:flex-start;gap:2px;margin-top:10px;padding:12px 14px 0;border-top:1px solid var(--glass-edge)}
+  html .sidebar .sidebar-footer .text-button{margin:0;min-height:40px}
+  html .sidebar .sidebar-footer p{margin:6px 0}
+
+  /* Shelf header: the title on its own line, then search and Add reading side by side */
+  html .library-toolbar{flex-wrap:wrap;gap:14px}
+  html .library-toolbar .shelf-heading{flex:1 1 100%}
+  html .library-tools{flex:1 1 100%;width:100%;justify-content:stretch}
+  html .library-tools .library-search{flex:1;min-width:0;max-width:none;order:0}
+  html .library-add{min-height:46px;padding:0 16px}
+
+  /* Book home: a small cover beside the title; the meter and buttons run full width under them */
+  html .lf-hero{display:grid;grid-template-columns:84px minmax(0,1fr);column-gap:16px;align-items:end;margin-top:0}
+  html .lf-hero-cover{grid-column:1;grid-row:1/4;width:84px;align-self:end}
+  html .lf-hero-text{display:contents}
+  html .lf-hero-text>.eyebrow{grid-column:2;grid-row:1;margin:0 0 6px}
+  html .lf-hero-text>h1{grid-column:2;grid-row:2;font-size:30px;line-height:1.08}
+  html .lf-hero-text>.book-author{grid-column:2;grid-row:3;margin:6px 0 0;font-size:14px}
+  html .lf-hero-text>.lf-meter,html .lf-hero-text>.lf-hero-actions{grid-column:1/-1}
+  html .lf-hero-text>.lf-meter{margin-top:18px}
+}
+/* The holding meter: the lessons-left note never breaks in two */
+.keep-caption{flex-wrap:wrap}
+.keep-caption>span:last-child:not(:first-child){white-space:nowrap;margin-left:auto}

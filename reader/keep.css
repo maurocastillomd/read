@@ -1,0 +1,86 @@
+/* Keep what you read: Today card, holding meter, Before you start, Your copy. */
+.keep-meter{margin:12px 0 0}
+.keep-meter.is-compact{margin:10px 0 0}
+.keep-bar{display:flex;height:6px;border-radius:var(--r-pill);background:var(--glass-fill);overflow:hidden}
+.keep-bar span{display:block;height:100%}
+.keep-bar .keep-held{background:var(--blue)}
+.keep-bar .keep-fading{background:color-mix(in srgb,var(--blue) 45%,var(--paper))}
+.keep-bar .keep-missed{background:color-mix(in srgb,var(--ink) 35%,var(--paper))}
+.keep-caption{display:flex;justify-content:space-between;gap:12px;margin-top:6px;font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.keep-caption>span:first-child{display:inline-flex;flex-wrap:wrap;gap:0 6px}
+.keep-caption i{font-style:normal;opacity:.6}
+.keep-caption .keep-held{color:var(--blue);font-weight:600}
+.keep-meter.is-compact .keep-caption{font-size:12.5px;margin-top:5px}
+.book-tile .keep-meter{margin:10px 0 0}
+.lf-meter .keep-meter{margin:0}
+
+/* Today */
+.today-card .button-row{margin:14px 0 0}
+.today-card .review-card-text p:last-of-type{max-width:52ch}
+.today-card .review-card-text h2{font:600 22px/1.2 var(--serif);letter-spacing:-.02em}
+.keep-chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 4px}
+.keep-chip{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border-radius:var(--r-pill);background:var(--glass-fill);color:var(--muted);font:500 12.5px/1 var(--sans);white-space:nowrap}
+.keep-chip i{width:7px;height:7px;border-radius:50%;background:var(--blue)}
+.keep-chip.is-m i{background:color-mix(in srgb,var(--ink) 45%,var(--paper))}
+.keep-chip.is-g i,.keep-chip.is-r i{background:color-mix(in srgb,var(--blue) 45%,var(--paper))}
+.today-card .review-card-text p:last-of-type{margin:6px 0 0}
+.today-review .eyebrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 10px;text-transform:none;letter-spacing:0;font-size:13px;color:var(--muted)}
+.today-review .keep-chip{text-transform:none;letter-spacing:0}
+.keep-prompt{margin:0 0 14px;font-size:20px;line-height:1.4;font-weight:600}
+.today-review .idea-takeaway{font-size:22px;margin:0 0 10px}
+.today-review .tap-choices{margin-top:4px}
+.today-review .tap-feedback,.before-start .tap-feedback{margin-top:16px}
+.keep-when{margin:8px 0 0!important;font-size:13px;color:var(--muted)}
+.review-done .primary,.review-done .secondary{margin:0 4px}
+
+/* Before you start */
+.before-start{margin:0 0 26px;padding:22px 24px;border:1px solid color-mix(in srgb,var(--blue) 30%,transparent);border-radius:var(--r-card);background:color-mix(in srgb,var(--blue) 6%,var(--glass-bg-strong));box-shadow:var(--glass-shadow)}
+.before-start .idea-head{margin-bottom:8px}
+.before-start .keep-prompt{font-size:19px}
+.before-start .idea-takeaway{font-size:20px;margin:0 0 8px}
+.before-start .idea-figure.is-small{max-width:420px;margin:0 0 10px}
+.before-start .tap-choices{max-width:620px}
+.before-start .idea-note{margin:14px 0 0;font-size:13px;color:var(--muted)}
+.before-on{margin:14px 0 0;font-weight:600;color:var(--blue)}
+.before-start.is-done{border-color:var(--glass-edge);background:var(--glass-bg-strong)}
+
+/* Your copy */
+.keep-copy{margin:0 0 30px;padding:26px 28px;border:1px solid var(--glass-edge);border-radius:var(--r-sheet);background:var(--glass-bg-strong);box-shadow:var(--glass-shadow)}
+.keep-copy-head{display:flex;gap:20px;align-items:flex-start;justify-content:space-between;margin-bottom:18px}
+.keep-copy-head .eyebrow{margin:0 0 6px}
+.keep-copy-head h2{margin:0 0 6px;font-size:28px;line-height:1.15}
+.keep-copy-head p{margin:0;color:var(--muted);font-size:15px;max-width:48ch}
+.keep-copy-head .secondary{flex:none;display:inline-flex;gap:8px;align-items:center}
+.keep-copy-head .secondary .read-icon{width:18px;height:18px}
+.keep-copy-label{margin:18px 0 10px;font-size:11px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.keep-slipping{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.keep-slip{display:grid;gap:6px;padding:12px;border:0;border-radius:var(--r-card);background:color-mix(in srgb,var(--blue) 6%,transparent);color:var(--ink);text-align:left;cursor:pointer;transition:transform .2s var(--ease),background .2s var(--ease)}
+.keep-slip:hover{background:color-mix(in srgb,var(--blue) 10%,transparent)}
+.keep-slip:active{transform:scale(.97)}
+.keep-slip-art{display:block;border-radius:var(--r-control);background:var(--glass-fill);padding:4px}
+.keep-slip strong{font:500 14.5px/1.35 var(--sans)}
+.keep-slip small{font-size:12px;color:var(--muted)}
+.keep-copy-list{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.keep-copy-list li{display:flex;gap:12px;align-items:flex-start;font-family:Literata,"Iowan Old Style",Georgia,serif;font-size:17px;line-height:1.5}
+.keep-copy-list li i{flex:none;width:10px;height:10px;margin-top:9px;border-radius:50%;background:var(--glass-fill)}
+.keep-copy-list li.is-held i{background:var(--blue)}
+.keep-copy-list li.is-learning i{background:color-mix(in srgb,var(--blue) 45%,var(--paper))}
+.keep-copy-list li.is-fading i{background:color-mix(in srgb,var(--blue) 45%,var(--paper));box-shadow:0 0 0 3px var(--blue-wash)}
+.keep-copy-list li.is-missed i{background:color-mix(in srgb,var(--ink) 35%,var(--paper))}
+.keep-copy-list li strong{font:600 12px/1 var(--sans);color:var(--muted);margin-right:4px;vertical-align:middle;letter-spacing:.02em}
+
+@media (max-width:640px){
+  .keep-copy{padding:20px}
+  .keep-copy-head{flex-direction:column}
+  .before-start{padding:18px}
+}
+@media (prefers-reduced-motion:reduce){.keep-slip{transition:none}}
+
+/* Library toolbar: search and Add reading side by side, now that the intro block is gone */
+.library-tools{display:flex;align-items:center;gap:10px;flex:1;justify-content:flex-end;min-width:0}
+.library-tools .library-search{flex:1;max-width:320px}
+.library-add{flex:none;display:inline-flex;gap:8px;align-items:center;white-space:nowrap}
+.library-add .read-icon{width:18px;height:18px}
+.lf-continue{margin-top:0}
+@media (max-width:640px){.library-tools{width:100%}.library-tools .library-search{max-width:none}}
+@media (max-width:600px){.today-card .review-card-art{display:none}}

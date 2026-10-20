@@ -1,0 +1,61 @@
+/* One reading scale. Labels and controls are deliberately smaller than prose. */
+:root{
+ --reading-size:20px;
+ --reading-body:var(--reading-size);
+ --reading-ui:max(16px,calc(var(--reading-size) * .82));
+ --reading-small:max(14px,calc(var(--reading-size) * .7));
+ --reading-heading:calc(var(--reading-size) * 1.3);
+ --reading-subheading:calc(var(--reading-size) * 1.12);
+ --lesson-padding:clamp(20px,2.2vw,36px);
+ --lesson-gap:clamp(24px,2.8vw,40px);
+ --lesson-radius:18px;
+ --lesson-column:min(var(--page-column,1560px),calc(var(--reading-size) * var(--lesson-column-units,52) + 2 * var(--lesson-padding)));
+}
+body{letter-spacing:normal;-webkit-font-smoothing:auto}
+.lesson-body,.chapter-practice,#source-content{font-size:var(--reading-body);line-height:1.7;font-family:var(--sans)}#source-content .source-p{font:400 var(--reading-body)/1.8 var(--sans);letter-spacing:normal;text-align:start;hyphens:none;overflow-wrap:break-word;margin-bottom:1.2em}
+/* Low specificity lets an intentional caption, status or label keep its role. */
+.lesson-body :where(p,li){font-size:var(--reading-body);line-height:1.7;letter-spacing:normal}
+.lesson-body :is(.lead-sm,.key-sentence,.concept-list p,.idea-summary){font-size:var(--reading-body);line-height:1.7;letter-spacing:normal}
+.lesson-body :is(.principle-text,.analogy-explanation,.fictional-example,.recall-item){max-width:var(--prose-measure,72ch)}
+.lesson-body :is(h2,h3),#source-content h2,.chapter-practice :is(h2,h3){font-family:var(--sans);font-weight:650;letter-spacing:-.02em;line-height:1.35}
+.lesson-body h2,.chapter-practice h2{font-size:var(--reading-heading)}
+.lesson-body h3,.chapter-practice h3{font-size:var(--reading-subheading)}
+.lesson-body textarea,.lesson-lab textarea,.chapter-practice textarea{font-size:var(--reading-body);line-height:1.6}
+.lesson-body :is(.eyebrow,.lab-kicker,.principle-label),.chapter-practice .eyebrow{font-size:var(--reading-small);line-height:1.5;font-weight:650;letter-spacing:.05em}
+.lesson-body :is(.lab-fine,.small),.chapter-practice .small{font-size:var(--reading-small);line-height:1.6}
+.lesson-body .lab-choice{font-size:var(--reading-ui);line-height:1.6}
+.lesson-body .lab-visual-card figcaption{font-size:var(--reading-ui);line-height:1.6}
+.lesson-body .lab-sim-reading p,.lesson-body .lab-attention-comparison p{font-size:var(--reading-ui);line-height:1.6}
+.lesson-head h1{letter-spacing:-.035em}
+.reading-settings-trigger{white-space:nowrap;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);font:600 14px/1.4 var(--sans)}
+.mobile-header .reading-settings-trigger{margin-left:auto;margin-right:10px;min-width:44px;font-size:18px}
+.topbar .reading-settings-trigger{flex-shrink:0}
+
+/* Plain reading, examples and recall share the same spacing rhythm. */
+.lesson-body>.ladder,.lesson-body>.generated-flow{margin:24px auto;max-width:var(--prose-measure)}
+.lesson-body :is(.principle-text p,.analogy-explanation p,.generated-node p,.fictional-example li,.recall-item p){font-size:var(--reading-body);line-height:1.7}
+.lesson-body :is(.principle-text h3,.analogy-explanation h2,.generated-node h2,.recall-item h2){font-size:var(--reading-subheading);font-weight:650;line-height:1.4;letter-spacing:-.02em}
+.lesson-body :is(.analogy-explanation,.fictional-example,.self-check){padding:var(--lesson-padding);border-radius:var(--lesson-radius)}
+.lesson-body .recall-item{padding:var(--lesson-padding);border:1px solid var(--line);border-radius:var(--lesson-radius);background:var(--white,var(--paper));margin:24px auto}
+.lesson-body .recall-item h2{margin:0 0 16px}
+.lesson-body .recall-item textarea{min-height:128px}
+.lesson-body .answer{padding:18px 20px;margin-top:20px;font-size:var(--reading-body);line-height:1.7}
+.lesson-body .answer summary{font-size:var(--reading-ui);line-height:1.5;min-height:28px}
+.lesson-body .answer p{font-size:var(--reading-body);line-height:1.7}
+.lesson-body :is(label,.lab-field-label){font-size:var(--reading-ui);line-height:1.5}
+.lesson-body :is(.limit,.limit p,.diagram-caption,.field small,.field-note,.source-link,.lab-fine){font-size:var(--reading-small);line-height:1.6}
+.lesson-body .source-link{min-height:40px}
+.lesson-body .definition-grid{max-width:var(--prose-measure);margin-inline:auto}
+.lesson-body .idea-summary{padding:24px var(--lesson-padding)}
+.lesson-body .key-sentence{font-size:var(--reading-subheading);line-height:1.6;padding:var(--lesson-padding);margin:0 auto 24px}
+
+@media(max-width:767px){
+ .topbar .reading-settings-trigger{display:none}
+ .reader-position-bar .reading-settings-button{display:none}
+ .reader-position-bar{top:71px}
+ .mobile-header{gap:8px}
+ .mobile-header .wordmark{margin-right:auto}
+ .lesson-body :is(.principle-text,.analogy-explanation,.fictional-example,.recall-item){max-width:100%}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+@media print{.reading-settings-trigger{display:none}#source-content .source-p,.lesson-body{font-size:12pt;line-height:1.6}}

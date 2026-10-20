@@ -1,0 +1,88 @@
+/* Lessons first: Continue card, book home ("the whole book in N minutes"), finish card, lesson codes. */
+.lesson-code{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:var(--r-pill);background:var(--blue-wash);color:var(--blue);font:650 12.5px/1 var(--sans);letter-spacing:.02em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.lesson-bar-count{display:inline-flex;align-items:center;gap:8px}
+.lesson-bar-count>span:last-child{color:var(--muted);font-size:13px}
+.chapter-order{font-variant-numeric:tabular-nums;white-space:nowrap}
+
+.lf-meter{margin:14px 0 0}
+.lf-meter-caption{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-bottom:6px}
+.lf-meter progress{display:block;width:100%;height:6px;border:0;border-radius:var(--r-pill);background:var(--glass-fill);overflow:hidden;appearance:none}
+.lf-meter progress::-webkit-progress-bar{background:var(--glass-fill);border-radius:var(--r-pill)}
+.lf-meter progress::-webkit-progress-value{background:var(--blue);border-radius:var(--r-pill)}
+.lf-meter progress::-moz-progress-bar{background:var(--blue);border-radius:var(--r-pill)}
+.lf-takeaway{margin:0;font-family:Literata,"Iowan Old Style",Georgia,serif;font-size:17px;line-height:1.5;color:var(--ink)}
+
+/* Library: one tap back to the next lesson */
+.lf-continue{display:flex;gap:26px;align-items:center;margin:8px 0 34px;padding:26px;border:1px solid var(--glass-edge);border-radius:var(--r-sheet);background:var(--glass-bg-strong);box-shadow:var(--glass-shadow)}
+.lf-continue-art{flex:none;width:230px;padding:6px;border-radius:var(--r-card);background:color-mix(in srgb,var(--blue) 7%,transparent)}
+.lf-continue-text{flex:1;min-width:0}
+.lf-continue .eyebrow{margin:0 0 8px}
+.lf-continue h2{margin:0 0 10px;font-size:30px;line-height:1.15}
+.lf-continue .button-row{margin-top:18px;display:flex;flex-wrap:wrap;gap:10px}
+
+/* Book home */
+.lf-hero{display:flex;gap:30px;align-items:flex-end;margin:10px 0 28px}
+.lf-hero-cover{flex:none;width:150px}
+.lf-hero-cover .book-object{width:100%}
+.lf-hero-text{flex:1;min-width:0}
+.lf-hero-text .eyebrow{margin:0 0 10px}
+.lf-hero-text h1{margin:0;font-size:clamp(36px,4.6vw,52px)}
+.lf-hero-text .book-author{margin:8px 0 0;color:var(--muted)}
+.lf-hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px;margin-top:18px}
+.lf-original{color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+.lf-original .read-icon{width:18px;height:18px}
+.lf-brief-card{margin:0 0 26px;padding:26px 30px;border:1px solid var(--glass-edge);border-radius:var(--r-sheet);background:var(--glass-bg-strong);box-shadow:var(--glass-shadow)}
+.lf-brief-card .eyebrow{margin:0 0 10px;color:var(--muted)}
+.lf-brief-card p:last-child{margin:0;font-family:Literata,"Iowan Old Style",Georgia,serif;font-size:clamp(18px,2.3vw,20px);line-height:1.62;color:var(--ink);hanging-punctuation:first}
+.lf-path-head{margin-top:34px}
+.lf-path-toggle{display:flex;align-items:center;gap:12px;flex:1;min-width:0;min-height:48px;margin:0 0 0 -12px;padding:4px 12px;border:0;border-radius:var(--r-control);background:none;color:var(--ink);text-align:left;cursor:pointer;transition:background .2s var(--ease),transform .2s var(--ease)}
+.lf-path-toggle:hover{background:var(--glass-fill)}
+.lf-path-toggle:active{transform:scale(.98)}
+.lf-path-count{color:var(--muted);font:500 14.5px/1 var(--sans);white-space:nowrap}
+.lf-path-chevron{flex:none;width:9px;height:9px;margin:0 4px 4px auto;border-right:1.8px solid var(--muted);border-bottom:1.8px solid var(--muted);transform:rotate(45deg);transition:transform .2s var(--ease)}
+.lf-path-toggle[aria-expanded=true] .lf-path-chevron{transform:rotate(-135deg) translate(-3px,-3px)}
+.lf-path-note{margin:-4px 0 16px;color:var(--muted);font-size:15px}
+.lf-path{display:flex;flex-direction:column;gap:14px}
+.lf-row{display:flex;gap:20px;align-items:flex-start;padding:18px;border:1px solid var(--glass-edge);border-radius:var(--r-card);background:var(--glass-bg-strong);box-shadow:var(--glass-shadow)}
+.lf-row.is-next{border-color:color-mix(in srgb,var(--blue) 55%,transparent);box-shadow:0 0 0 1px color-mix(in srgb,var(--blue) 40%,transparent),var(--glass-shadow)}
+.lf-row-art{flex:none;width:170px;padding:4px;border:0;border-radius:var(--r-control);background:color-mix(in srgb,var(--blue) 6%,transparent);cursor:pointer;transition:transform .2s var(--ease)}
+.lf-row-art:active{transform:scale(.97)}
+.lf-row-text{flex:1;min-width:0}
+.lf-row-head{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.lf-row h3{margin:0 0 6px;font-family:var(--serif);font-weight:450;font-size:21px;line-height:1.2;letter-spacing:-.02em}
+.lf-row-chapter{margin:-2px 0 6px;font-size:13px;color:var(--muted)}
+.lf-badge{display:inline-flex;align-items:center;height:22px;padding:0 9px;border-radius:var(--r-pill);font:600 12px/1 var(--sans)}
+.lf-badge.is-done{background:var(--glass-fill);color:var(--muted)}
+.lf-badge.is-next{background:var(--blue);color:#fff}
+.lf-brief{margin:10px 0 0}
+.lf-brief summary{cursor:pointer;color:var(--blue);font-size:14.5px;font-weight:550;list-style:none;display:inline-flex;align-items:center;gap:6px;min-height:40px}
+.lf-brief summary::-webkit-details-marker{display:none}
+.lf-brief summary::after{content:"";width:7px;height:7px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s var(--ease)}
+.lf-brief[open] summary::after{transform:rotate(-135deg) translateY(-1px)}
+.lf-brief p{margin:6px 0 10px;font-family:Literata,"Iowan Old Style",Georgia,serif;font-size:17.5px;line-height:1.6;color:var(--ink)}
+.lf-brief p+p{text-indent:1.4em;margin-top:0}
+.lf-open{margin-top:4px;min-height:40px}
+
+/* After the last lesson */
+.lf-finished{margin:6px 0 30px;padding:30px;text-align:center;border:1px solid var(--glass-edge);border-radius:var(--r-sheet);background:var(--glass-bg-strong);box-shadow:var(--glass-shadow)}
+.lf-finished-mark{width:60px;height:60px;margin:0 auto 14px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--blue);color:#fff}
+.lf-finished .eyebrow{margin:0 0 6px}
+.lf-finished h2{margin:0 0 12px}
+.lf-sentence{max-width:32em;margin:0 auto 22px;font-family:Literata,"Iowan Old Style",Georgia,serif;font-size:19px;line-height:1.55;color:var(--ink)}
+.lf-next{display:flex;gap:22px;align-items:center;text-align:left;margin:8px auto 0;max-width:600px;padding:20px;border-radius:var(--r-card);background:color-mix(in srgb,var(--blue) 6%,transparent)}
+.lf-next-cover{flex:none;width:96px}
+.lf-next-cover .book-object{width:100%}
+.lf-next-text{min-width:0}
+.lf-next-text .eyebrow{margin:0 0 4px}
+.lf-next-text h3{margin:0;font-family:var(--serif);font-weight:450;font-size:26px;line-height:1.15}
+.lf-next-text p{margin:4px 0 0;color:var(--muted);font-size:14.5px}
+.lf-next .button-row,.lf-finished>.button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;justify-content:inherit}
+
+@media (max-width:640px){
+  .lf-continue,.lf-hero,.lf-next{flex-direction:column;align-items:stretch}
+  .lf-continue-art{width:100%}
+  .lf-hero-cover{width:110px}
+  .lf-row{flex-direction:column}
+  .lf-row-art{width:100%}
+}
+@media (prefers-reduced-motion:reduce){.lf-row-art,.lf-brief summary::after,.lf-path-toggle,.lf-path-chevron{transition:none}}
