@@ -14,5 +14,6 @@ export async function isoSource(){
     +wrapKit(await read('reader/vendor/anatomy/lathe.mjs'),'IsoLathe','const {cameraOf,iso,pathOf}=IsoKit;')
     +wrapKit(await read('reader/vendor/anatomy/tube.mjs'),'IsoTube','const {iso,pathOf}=IsoKit;const G=IsoLathe;')
     +await read('reader/iso-machines.js')
-    +await read('reader/iso-compose.js');
+    +await read('reader/iso-compose.js')
+    +await read('reader/iso-scenes.js');
 }

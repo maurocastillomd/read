@@ -230,8 +230,9 @@
   }
 
   // ---------- The register ----------
-  // Every picture asks for its machine by a stable key. The first picture of each kind
-  // gets the hand-built machine; the rest get a composed one no other picture has.
+  // Every picture asks for its machine by a stable key. A picture with a plan is drawn
+  // from its own subject; otherwise the first picture of each kind gets the hand-built
+  // machine and the rest get a composed one no other picture has.
   // isoKeysHook (set by idea-visual.js) lists the library's pictures in a fixed order
   // so the same picture always gets the same machine.
   let isoKeysHook=null;
@@ -247,10 +248,18 @@
   function isoClaim(key,kind,n=3,o={}){
     if(isoTaken.has(key))return isoTaken.get(key);
     let sig;
-    const family=ISO_HANDMADE[kind];
-    if(family&&!isoFamilies.has(family)){isoFamilies.add(family);const [name,opts]=isoHandmade(kind,n,o);sig={hand:name,opts};}
+    const family=ISO_HANDMADE[kind],shape=ISO_SHAPE[kind]||'web',count=shape==='pair'?2:shape==='rail'?Math.max(1,Math.min(5,(o.marks||[]).length||3)):Math.max(1,Math.min(5,n));
+    // A picture plan draws the lesson's own subject (reader/iso-scenes.js). Two pictures
+    // that name the same things in the same order turn the camera or swap a variant.
+    const plan=o.scene&&shape!=='rail'&&kind!=='glance'?isoSceneOk(o.scene,count):null;
+    if(plan)scan:for(let m=0;m<(1<<count);m++)for(const az of [45,-45]){
+      const vars=plan.vars.map((v,i)=>v^((m>>i)&1)),exact='scene|'+plan.objects.join(',')+'|'+vars.join('')+'|'+az;
+      if(!isoExact.has(exact)){isoExact.add(exact);sig={scene:{objects:plan.objects,link:plan.link,vars,az}};break scan;}
+    }
+    if(sig);
+    else if(family&&!isoFamilies.has(family)){isoFamilies.add(family);const [name,opts]=isoHandmade(kind,n,o);sig={hand:name,opts};}
     else{
-      const shape=ISO_SHAPE[kind]||'web',count=shape==='pair'?2:shape==='rail'?Math.max(1,Math.min(5,(o.marks||[]).length||3)):Math.max(1,Math.min(5,n)),rnd=isoRandom(isoSeed(key));
+      const rnd=isoRandom(isoSeed(key));
       let best=null,bestScore=Infinity;
       for(let t=0;t<240;t++){
         const pool=[...ISO_STATION_NAMES],mods=[];
@@ -278,6 +287,6 @@
     const sig=isoClaim(key,kind,n,o);
     // A study's group count and result come from the article itself, not the register.
     if(kind==='glance')return sig.hand?isoMachine('bench',{groups:n,dir:o.dir||'flat'}):isoCompose({...sig,n:Math.min(n,sig.mods.length),mods:sig.mods.slice(0,n),vars:sig.vars.slice(0,n),opts:{dir:o.dir||'flat'}});
-    return sig.hand?isoMachine(sig.hand,sig.opts):isoCompose(sig);
+    return sig.scene?isoScenePicture(sig.scene):sig.hand?isoMachine(sig.hand,sig.opts):isoCompose(sig);
   }
   function isoResetPicks(){isoTaken.clear();isoExact.clear();isoSets.clear();isoUse.clear();isoFamilies.clear();}

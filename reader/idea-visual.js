@@ -33,7 +33,7 @@
       return best?ideaSentence(best.explanation,200):ideaSentence(cv.caption||g.gist,200);
     });
     const kind=Object.hasOwn(IDEA_KINDS,over.kind||cv.kind)?(over.kind||cv.kind):'network';
-    return {key:'idea:'+ideaKey(rec),kind,title:cv.title||g.title,takeaway:over.takeaway||cv.takeaway||ideaSentence(g.gist,170),labels,parts,caption:cv.caption||''};
+    return {key:'idea:'+ideaKey(rec),kind,title:cv.title||g.title,takeaway:over.takeaway||cv.takeaway||ideaSentence(g.gist,170),labels,parts,caption:cv.caption||'',scene:over.scene||cv.scene||null};
   }
   // Every picture in the library, in a fixed order, so no two share a machine
   // (reader/iso-compose.js): all lessons first, then 30-min figures, then the one-off art.
@@ -43,7 +43,7 @@
     token:()=>ideaLibraryOrder().map(b=>b.id+':'+(b.sourceType==='article'?'a':bookGuides(b).length+'/'+(typeof thirtyMinFor==='function'&&thirtyMinFor(b)?1:0))).join(','),
     keys(){
       const list=ideaLibraryOrder(),out=[];
-      for(const b of list)if(b.sourceType!=='article')for(const r of bookGuides(b)){const rec={...r,bookId:b.id};if(ideaApplies(rec))out.push(['idea:'+ideaKey(rec),ideaVisual(rec).kind,3]);}
+      for(const b of list)if(b.sourceType!=='article')for(const r of bookGuides(b)){const rec={...r,bookId:b.id};if(ideaApplies(rec)){const v=ideaVisual(rec);out.push(['idea:'+ideaKey(rec),v.kind,3,{scene:v.scene}]);}}
       for(const b of list){const v=typeof thirtyMinFor==='function'?thirtyMinFor(b):null;if(v)tmFigureKeys(b,v).forEach(k=>out.push(k));}
       for(const b of list)out.push(b.sourceType==='article'?['glance:'+b.id,'glance',4]:['book:'+b.id,'release',3]);
       out.push(['today','network',3]);
@@ -85,7 +85,7 @@
   // the three labels sit under it as chips that select the matching part.
   function ideaArt(v,{id='iv',selected=-1,seen=[],hidden=-1,thumb=false,interactive=true}={}){
     const tap=interactive&&!thumb&&hidden<0;
-    const svg=isoPick(v.key||'idea:'+v.title,v.kind);
+    const svg=isoPick(v.key||'idea:'+v.title,v.kind,3,{scene:v.scene});
     if(thumb)return `<div class="ivm idea-art is-thumb">${isoThumb(svg,v.title+': '+v.labels.join(', '))}</div>`;
     const fig=isoFigure(svg,{selected,hidden,parts:3,interactive:tap,labels:v.labels,cls:'idea-art'});
     const chip=(l,i)=>{const cls=`ivm-chip${i===selected?' is-selected':''}${seen.includes(i)?' is-seen':''}${i===hidden?' is-gap':''}`,label=i===hidden?'?':l;

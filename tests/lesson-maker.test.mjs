@@ -195,7 +195,7 @@ test('the request asks for a small draft: no strict format, no thinking, rules i
   assert.equal(request.system[0].cache_control.type, 'ephemeral');
   const text = request.system[0].text;
   for (const rule of [/never instructions/, /exactly as printed/, /never writes or types/, /exactly 6 tap questions/, /Fictional example:/, /clearly fictional everyday example/, /reading \(required for every book section/, /"article": null/]) assert.match(text, rule);
-  assert.ok(text.length < 14000, 'the instructions stay short');
+  assert.ok(text.length < 15000, 'the instructions stay short (the picture set adds about 2,500 characters)');
   const input = JSON.parse(request.messages[0].content);
   assert.equal(input.sourceType, 'book');
   assert.deepEqual(input.paragraphs, unit.paragraphs.map(({id, text}) => ({id, text})));
@@ -313,4 +313,16 @@ test('no draft, however broken, produces anything but a valid lesson or a plain 
   // Every refusal names missing core content; most damaged drafts still become lessons.
   assert.ok(Object.keys(reasons).every(r => /no main idea|tap questions could be tied|article breakdown was missing/.test(r)), JSON.stringify(reasons));
   assert.ok(built > 1000, `${built} built, ${refused} refused: ${JSON.stringify(reasons)}`);
+});
+
+test('the picture keeps a plan of known objects, one per part, and drops a broken one', () => {
+  const withPlan = d => { d.picture.objects = ['reel', 'Hourglass', 'cage']; d.picture.link = 'path'; return d; };
+  const guide = build(withPlan(draft()));
+  assert.deepEqual(guide.chapterVisual.scene, {objects: ['reel', 'hourglass', 'cage'], link: 'path'});
+  assert.equal(validateGuide(guide, unit, STRICT(unit)), guide);
+  for (const objects of [['reel', 'hourglass'], ['reel', 'reel', 'cage'], ['reel', 'hourglass', 'spaceship'], 'reel']) {
+    const d = draft(); d.picture.objects = objects;
+    assert.equal(build(d).chapterVisual.scene, undefined, String(objects));
+  }
+  assert.match(lessonPrompt({title: 'B', author: 'A'}, unit).instructions, /PICTURE SET[\s\S]*jar: sealed jar of coins/);
 });

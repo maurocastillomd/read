@@ -1,13 +1,15 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import vm from 'node:vm';
+import {readFileSync, readdirSync} from 'node:fs';
 import {isoSource} from '../scripts/iso-source.mjs';
+import {SCENE_NAMES} from '../lib/scene-objects.mjs';
 
 const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'}[c]));
 const context = {esc, document: {getElementById: () => ({}), createElement: () => ({}), head: {appendChild() {}}}};
 vm.createContext(context);
-vm.runInContext(await isoSource() + ';this.api={isoMachine,isoForKind,isoFigure,isoThumb,isoPick,isoClaim,isoSetKeys,ISO_STATION_NAMES,isoCompose};', context);
-const {isoMachine, isoForKind, isoFigure, isoThumb, isoPick, isoSetKeys, ISO_STATION_NAMES, isoCompose} = context.api;
+vm.runInContext(await isoSource() + ';this.api={isoMachine,isoForKind,isoFigure,isoThumb,isoPick,isoClaim,isoSetKeys,ISO_STATION_NAMES,isoCompose,isoScenePicture,isoSceneOk};', context);
+const {isoMachine, isoForKind, isoFigure, isoThumb, isoPick, isoSetKeys, ISO_STATION_NAMES, isoCompose, isoScenePicture, isoSceneOk} = context.api;
 
 const variants = [
   ['tank', {}, 3], ['tank', {level: .86}, 3], ['balance', {}, 3],
@@ -68,5 +70,53 @@ test('every station draws clean in each variant and layout', () => {
     const svg = isoCompose({shape, n, mods: ISO_STATION_NAMES.slice(0, n), vars: Array(n).fill(0), az: -45, opts: opts || {}});
     assert.doesNotMatch(svg, /NaN|undefined|Infinity/, shape);
     for (let i = 0; i < n; i++) assert.match(svg, new RegExp(`<g data-p="${i}">`), shape + ' part ' + i);
+  }
+});
+
+test('every object in the picture set draws clean, in both variants and from both sides', () => {
+  for (const name of SCENE_NAMES) for (const v of [0, 1]) for (const az of [45, -45]) {
+    const svg = isoScenePicture({objects: [name], link: 'none', vars: [v], az}), what = `${name} v${v} ${az}`;
+    assert.doesNotMatch(svg, /NaN|undefined|Infinity/, what);
+    assert.match(svg, /<g data-p="0">/, what);
+    assert.doesNotMatch(svg, /<text/, what + ': no words in the drawing');
+  }
+});
+
+test('a picture plan draws the lesson’s own things, and two plans naming the same things still differ', () => {
+  const scene = {objects: ['jar', 'coins', 'seedling'], link: 'none'};
+  const keys = [['a', 'decision', 3, {scene}], ['b', 'decision', 3, {scene}], ['c', 'loop', 3, {scene: {objects: ['jar', 'coins']}}], ['d', 'loop', 3, {scene: {objects: ['jar', 'coins', 'spaceship']}}], ['e', 'contrast', 2, {scene: {objects: ['scales', 'dice']}}]];
+  isoSetKeys({token: () => 'plans', keys: () => keys});
+  const [a, b, c, d, e] = keys.map(([key, kind, n, o]) => isoPick(key, kind, n, o));
+  assert.match(a, /aria-label="A picture: a locked jar of coins, a tray of coins and a seedling in a pot\."/);
+  assert.notEqual(a, b);
+  assert.match(b, /aria-label="A picture: /);
+  for (const svg of [a, b, e]) for (let i = 0; i < 3 && i < (svg === e ? 2 : 3); i++) assert.match(svg, new RegExp(`<g data-p="${i}">`));
+  // a plan that does not fit the parts falls back to a machine
+  assert.doesNotMatch(c, /A picture: /);
+  assert.doesNotMatch(d, /A picture: /);
+  assert.equal(isoSceneOk({objects: ['bell', 'gears', 'lamp'], link: 'beam'}, 3).link, 'beam');
+  assert.equal(isoSceneOk({objects: ['bell', 'bell', 'lamp']}, 3), null);
+});
+
+test('every bundled lesson and 30-min figure has a plan the reader can draw, and no two share one', () => {
+  const visuals = JSON.parse(readFileSync(new URL('./idea-visuals.json', import.meta.url), 'utf8'));
+  const seen = new Set();
+  const check = (scene, count, what) => {
+    assert.ok(isoSceneOk(scene, count), what);
+    assert.ok(scene.objects.every(o => SCENE_NAMES.includes(o)), what + ': in the shared set');
+    const sig = scene.objects.join(',');
+    assert.ok(!seen.has(sig), what + ': repeats ' + sig);
+    seen.add(sig);
+  };
+  for (const [book, units] of Object.entries(visuals)) for (const [unit, v] of Object.entries(units)) check(v.scene, 3, book + ' ' + unit);
+  const dir = new URL('./thirty-min/', import.meta.url);
+  for (const file of readdirSync(dir).filter(f => f.endsWith('.json'))) {
+    const tm = JSON.parse(readFileSync(new URL(file, dir), 'utf8'));
+    tm.sections.forEach((s, i) => s.blocks.forEach((b, k) => {
+      const f = b.fig;
+      if (!f || f.kind === 'scale' || f.kind === 'stat') return;
+      const count = f.kind === 'contrast' ? 2 : Math.max(2, Math.min(5, (f.steps || f.layers || f.items).length));
+      check(f.scene, count, `${file} ${i}-${k}`);
+    }));
   }
 });

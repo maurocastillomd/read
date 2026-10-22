@@ -23,7 +23,7 @@
   function tmFigureArgs(f) {
     const n = list => Math.max(2, Math.min(5, (list || []).length));
     const count = {contrast: 2, chain: n(f.steps), cycle: n(f.steps), stack: n(f.layers), terms: n(f.items), scale: n(f.marks), stat: 3}[f.kind];
-    return count ? [f.kind, count, f.kind === 'scale' ? {marks: [...f.marks].sort((a, b) => a.at - b.at).map(m => Math.round(m.at))} : {}] : null;
+    return count ? [f.kind, count, f.kind === 'scale' ? {marks: [...f.marks].sort((a, b) => a.at - b.at).map(m => Math.round(m.at))} : {scene: f.scene}] : null;
   }
   function tmFigureKeys(book, v) {
     const out = [];
