@@ -11,7 +11,7 @@ const COOKIE = "read_session";
 const SESSION_DAYS = 365;
 const IDENTITY_PREFIX = "oai-authenticated-user-";
 
-type AuthEnv = { READ_PASSWORD?: string; SESSION_SECRET?: string; SETUP_CODE?: string; OWNER_EMAIL?: string; FILES?: KVNamespace };
+type AuthEnv = { READ_PASSWORD?: string; SESSION_SECRET?: string; SETUP_CODE?: string; OWNER_EMAIL?: string; FILES?: KVNamespace; SIGN_IN_LIMIT?: RateLimit };
 const PASSWORD_KEY = "auth/owner-password";
 const MIN_PASSWORD = 8;
 
@@ -60,6 +60,13 @@ async function validSession(secret: string, request: Request): Promise<boolean> 
   const [expires, signature] = match[1].split(".");
   if (!expires || !signature || Number(expires) < Date.now()) return false;
   return sameSecret(secret, signature, await hmac(secret, `owner.${expires}`));
+}
+
+// Caps password and setup-code guesses for the whole site at 10 a minute
+// (scripts/deploy.mjs declares SIGN_IN_LIMIT). A signed-in device is never affected.
+async function attemptAllowed(env: AuthEnv): Promise<boolean> {
+  if (!env.SIGN_IN_LIMIT) return true;
+  return (await env.SIGN_IN_LIMIT.limit({ key: "owner-sign-in" })).success;
 }
 
 function safeReturnTo(value: string | null): string {
@@ -123,6 +130,7 @@ export async function ownerAuth(request: Request, env: AuthEnv): Promise<Respons
       return signInPage(returnTo, message, 401, setup);
     };
     if (request.method === "POST") {
+      if (!(await attemptAllowed(env))) return signInPage(returnTo, "Too many tries. Wait a minute, then try again.", 429, setup);
       const form = await request.formData().catch(() => null);
       const field = (name: string) => String(form?.get(name) ?? "");
       if (setup) {

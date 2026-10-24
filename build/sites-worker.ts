@@ -10,7 +10,7 @@ export default {
     // Local preview keeps the mocked identity from the Vite plugin.
     if (!import.meta.env.DEV) {
       const authed = await ownerAuth(request, env as Parameters<typeof ownerAuth>[1]);
-      if (authed instanceof Response) return authed;
+      if (authed instanceof Response) return withSecurityHeaders(authed);
       request = authed;
     }
     let binding = ctx.props?.CONNECTORS;
@@ -32,6 +32,18 @@ export default {
         },
       };
     }
-    return runWithConnectorBinding(binding, () => handler.fetch(request, env, ctx));
+    const response = await runWithConnectorBinding(binding, () => handler.fetch(request, env, ctx));
+    return withSecurityHeaders(response);
   },
 };
+
+// No other site may frame read. (clickjacking), and browsers keep declared content types.
+function withSecurityHeaders(response: Response): Response {
+  if (response.status === 101) return response;
+  const secured = new Response(response.body, response);
+  secured.headers.set("X-Frame-Options", "DENY");
+  if (!secured.headers.has("Content-Security-Policy")) secured.headers.set("Content-Security-Policy", "frame-ancestors 'none'");
+  secured.headers.set("X-Content-Type-Options", "nosniff");
+  if (!secured.headers.has("Referrer-Policy")) secured.headers.set("Referrer-Policy", "same-origin");
+  return secured;
+}

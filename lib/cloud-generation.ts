@@ -53,9 +53,12 @@ const outOfCredit = (reason: string) => /credit balance|billing|purchase credits
 const noWorkspace = (reason: string) => /anthropic-workspace-id|not scoped to a workspace/i.test(reason);
 export async function provider(path: string, init: RequestInit = {}, timeoutMs = 20000) {
   requireProvider();
+  // The API key only ever goes to the Anthropic API, including for result links it returns.
+  const target = path.startsWith('https://') ? path : `${API}${path}`;
+  if (new URL(target).origin !== new URL(API).origin) throw new ProviderError('The AI provider returned an unexpected link.');
   let response: Response;
   try {
-    response = await fetch(path.startsWith('https://') ? path : `${API}${path}`, {...init, signal: AbortSignal.timeout(timeoutMs), headers: {'x-api-key': runtime().key, 'anthropic-version': '2023-06-01', ...(workspaceId() ? {'anthropic-workspace-id': workspaceId()} : {}), ...init.headers}});
+    response = await fetch(target, {...init, signal: AbortSignal.timeout(timeoutMs), headers: {'x-api-key': runtime().key, 'anthropic-version': '2023-06-01', ...(workspaceId() ? {'anthropic-workspace-id': workspaceId()} : {}), ...init.headers}});
   } catch { throw new ProviderError('The AI connection timed out. Existing progress is saved.', true); }
   if (!response.ok) {
     // Only the provider's short error reason is kept, never a response body.
