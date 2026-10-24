@@ -22,6 +22,9 @@ const deploy = {
   // Library files go to Workers KV (free plan, no card) instead of R2.
   r2_buckets: [],
   kv_namespaces: [config.kv],
+  // Sign-in guesses are capped (build/owner-auth.ts). Old versions stay off the web.
+  ratelimits: [{ name: "SIGN_IN_LIMIT", namespace_id: "1001", simple: { limit: 10, period: 60 } }],
+  preview_urls: false,
   vars: { ...built.vars, ...config.vars },
 };
 writeFileSync(deployPath, JSON.stringify(deploy, null, 2));
