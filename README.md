@@ -49,6 +49,8 @@ In these commands, replace `read` with your site's name if you chose another.
 - **"The Anthropic key is not linked to a workspace"**: create the key inside a workspace in the Anthropic Console and save it again with `npx wrangler secret put ANTHROPIC_API_KEY --name read`, or save the workspace ID with `npx wrangler secret put ANTHROPIC_WORKSPACE_ID --name read`.
 - **Out of credits**: add credits in the Anthropic Console, then tap Retry in read.
 - **Forgot your password**: run `npx wrangler secret put READ_PASSWORD --name read` and type a new one. It replaces the old password.
+- **Lost a device, or think someone else signed in**: run `npx wrangler secret put SESSION_SECRET --name read` and paste a new long random value (for example from `openssl rand -base64 32`). Every device is signed out, and you sign in again with your password. Changing the password alone does not sign other devices out.
+- **"Too many tries"**: sign-in allows 10 attempts a minute for the whole site. Wait a minute and try again; devices already signed in keep working.
 
 ## What it costs
 
